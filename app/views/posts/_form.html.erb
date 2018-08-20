@@ -1,0 +1,23 @@
+<% if @post.errors.any? %>
+  <div id="error_explanation">
+    <p><%= pluralize(@post.errors.count, "error") %> prohibited this article from being saved:</p>
+
+    <ul>
+    <% @post.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+<%= form_for @post do |f| %>
+<%= f.hidden_field :likes, value: 0 %>
+<h3>Post Title:</h3>
+  <%= f.text_field :title %>
+  <h3>Select Destination:</h3>
+    <%= f.collection_select :destination_id, Destination.all, :id, :name %> <br>
+  <h3>Post Content:</h3>
+    <%= f.text_area :content %>
+      <h3>Select Blogger:</h3>
+        <%= f.collection_select :blogger_id, Blogger.all, :id, :name %> <br><br>
+      <%= f.submit %>
+      <% end %>

@@ -1,0 +1,15 @@
+<h1><%= @blogger.name %> </h1>
+
+<h3>Info</h3>
+<p>Age: <%= @blogger.age %> </p>
+<p>Biography</p>
+<p> <%= @blogger.bio %> </p>
+<p> Total Likes: <%= @blogger.posts.map {|post| post.likes}.inject(:+) %> </p>
+<p> <%= link_to 'See my featured post', post_path(@featured_post[0].id) %> </p>
+<h3>My top 5 destinations: </h3>
+<ol>
+<% @top_5_destinations.each do |post| %>
+<li><%= link_to post.destination.name, destination_path(post.destination.id) %></li>
+<% end %>
+
+</ol>
