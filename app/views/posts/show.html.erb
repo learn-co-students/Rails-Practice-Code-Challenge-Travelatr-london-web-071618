@@ -1,0 +1,8 @@
+<h1><%= @post.title %> </h1>
+<h2>Destination: <%= link_to @post.destination.name, destination_path(@post.destination) %> </h2>
+<p>by: <%= link_to @post.blogger.name, blogger_path(@post.blogger) %> </p>
+<p> <%= @post.content %> </p>
+<p>Likes: <%= @post.likes %> </p>
+<%= form_tag like_path(@post), :method => :put do %>
+<%= submit_tag('Like') %>
+<% end %>
