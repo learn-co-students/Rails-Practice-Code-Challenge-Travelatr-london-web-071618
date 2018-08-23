@@ -1,0 +1,8 @@
+<h1><%= @destination.name %><h1>
+
+
+<% @destination.top_five_posts.map do |post|%>
+  <li><%= post.title %> | <%=post.likes%></li>
+  <% end %>
+
+<p>Average age of bloggers: <%= @destination.average_age%> years</p>
